@@ -53,8 +53,14 @@ lint: ## check style with flake8
 	pylint **/*.py
 	flake8 cd_dot_cz_price_search tests
 
+lint-watch:
+	while true; do clear; fswatch -o . | make lint; done
+
 test: ## run tests quickly with the default Python
-	python setup.py test
+	python -m unittest **/*.py
+
+test-watch:
+	while true; do clear; fswatch -o . | make test; done
 
 test-all: ## run tests on every Python version with tox
 	tox

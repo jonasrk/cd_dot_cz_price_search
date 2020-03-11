@@ -61,7 +61,7 @@ def lambda_handler(
 
     csv_dict = []
 
-    dates = get_dates(DATES_TO_QUERY)
+    dates = get_dates(DATES_TO_QUERY, start_date=datetime.date.today())
 
     for date in dates:
 
@@ -107,16 +107,14 @@ def send_email(email_body, make_network_requests):
         print(email_body)
 
 
-def get_dates(amount):
+def get_dates(amount, start_date):
     """Returns a list of dates starting today"""
-
-    day = datetime.date.today()
 
     dates = []
 
     for _ in range(amount):
-        dates.append(day.strftime("%d.%m.%Y"))
-        day += datetime.timedelta(days=1)
+        dates.append(start_date.strftime("%d.%m.%Y"))
+        start_date += datetime.timedelta(days=1)
 
     return dates
 
