@@ -48,7 +48,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v1
-            - name: isort
+            - name: unittests
               uses: jonasrk/GitHub-Action-for-pylint@master
               with:
                   args: 'pip3 install poetry; poetry install; poetry run python -m unittest **/*.py'
